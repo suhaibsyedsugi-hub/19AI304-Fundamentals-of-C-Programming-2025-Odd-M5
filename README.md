@@ -4,7 +4,7 @@
 ## 10. Implementation of programs using pointer arithmetic.
 # Ex.No:21
   Implement a C program to demonstrate call by value and call by reference by swapping two integers using separate functions.
-# Date : 
+# Date : 25.08.2026
 # Aim:
  To implement a C program that illustrates the difference between call by value and call by reference by swapping two integer variables using two separate functions.
 # Algorithm:
@@ -39,7 +39,41 @@
 ### Step 12: 
   Stop
 # Program:
+```python
+#include <stdio.h>
+
+void swapv(int x, int y)
+{
+    int t = x;
+    x = y;
+    y = t;
+    printf("%d %d\n", x, y);
+}
+
+void swapr(int *x, int *y)
+{
+    int t = *x;
+    *x = *y;
+    *y = t;
+}
+
+int main()
+{
+    int a = 10, b = 20;
+
+    printf("%d %d\n", a, b);
+    swapv(a, b);
+    printf("%d %d\n", a, b);
+
+    swapr(&a, &b);
+    printf("%d %d", a, b);
+
+    return 0;
+}
+```
 # Output:
+<img width="908" height="411" alt="image" src="https://github.com/user-attachments/assets/acf5328b-fa0d-46eb-ad6a-e6a126c90f08" />
+
 # Result: 
   Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -48,7 +82,7 @@
 # IAPR-5- Module 5 - FoC
 # Ex.No:22
   Implement a C program to generate the Fibonacci series using a recursive function. The program should accept a positive integer n and display the first n terms of the Fibonacci sequence.
-# Date : 
+# Date : 25.08.2026
 # Aim:
   To implement a C program that uses a recursive function to generate and display the Fibonacci series for a given number of terms.
 # Algorithm:
@@ -77,7 +111,31 @@
 ### Step 10:
   Stop
 # Program:
+```python
+#include <stdio.h>
+
+int fibo(int n)
+{
+    if(n==0 || n==1)
+        return n;
+    return fibo(n-1)+fibo(n-2);
+}
+
+int main()
+{
+    int n,i;
+
+    scanf("%d",&n);
+
+    for(i=0;i<n;i++)
+        printf("%d ",fibo(i));
+
+    return 0;
+}
+```
 # Output:
+<img width="1016" height="365" alt="image" src="https://github.com/user-attachments/assets/a80efccb-1bf5-44d5-a66e-82a39584e46c" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -86,7 +144,7 @@ Thus, the program was implemented and executed successfully, and the required ou
 # IAPR-5- Module 5 - FoC
 # Ex.No:23
    Implement a C program to demonstrate recursion by printing a sequence of even or odd numbers from a given lower limit to an upper limit, with each recursive call progressing by 2.
-# Date : 
+# Date : 25.08.2026
 # Aim:
   To implement a C program that uses a recursive function to print even or odd numbers in a specified range based on the starting value provided by the user.
 # Algorithm:
@@ -119,7 +177,32 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 12:
   Stop
 # Program:
+```python
+#include <stdio.h>
+
+void printEvenOdd(int cur,int limit)
+{
+    if(cur>limit)
+        return;
+
+    printf("%d ",cur);
+    printEvenOdd(cur+2,limit);
+}
+
+int main()
+{
+    int l,u;
+
+    scanf("%d%d",&l,&u);
+
+    printEvenOdd(l,u);
+
+    return 0;
+}
+```
 # Output:
+<img width="997" height="370" alt="image" src="https://github.com/user-attachments/assets/9bf05d33-ec02-4673-b188-632b1aa05c00" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -128,7 +211,7 @@ Thus, the program was implemented and executed successfully, and the required ou
 # IAPR-5- Module 5 - FoC
 # Ex.No:24
    Implement a C program that dynamically allocates memory using calloc(), accepts integer inputs from the user, computes their sum, and prints the sum.
-# Date : 
+# Date : 25.08.2026
 # Aim:
   To implement a C program that dynamically allocates memory for an array of integers using calloc(), accepts elements from the user, computes their sum, and displays the sum.
 # Algorithm:
@@ -161,7 +244,34 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 11:
   Stop
 # Program:
+```python
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int *ptr,n,i,sum=0;
+
+    scanf("%d",&n);
+
+    ptr=(int *)calloc(n,sizeof(int));
+
+    for(i=0;i<n;i++)
+        scanf("%d",ptr+i);
+
+    for(i=0;i<n;i++)
+        sum+=*(ptr+i);
+
+    printf("%d",sum);
+
+    free(ptr);
+
+    return 0;
+}
+```
 # Output:
+<img width="986" height="422" alt="image" src="https://github.com/user-attachments/assets/bd2396c5-c5e7-4b94-8d12-c0a015201aec" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -170,7 +280,7 @@ Thus, the program was implemented and executed successfully, and the required ou
 # IAPR-5- Module 5 - FoC
 # Ex.No:25
    Implement a C program that reads a set of integers into an array and displays the array elements using a user-defined function.
-# Date : 
+# Date : 25.08.2026
 # Aim:
   To implement a C program that reads integers into an array and displays the elements using a user-defined function.
 # Algorithm:
@@ -197,6 +307,31 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 10:
   Stop
 # Program:
+```python
+#include <stdio.h>
+
+void displayArray(int *arr,int size)
+{
+    int i;
+
+    for(i=0;i<size;i++)
+        printf("%d ",*(arr+i));
+}
+
+int main()
+{
+    int a[5],i;
+
+    for(i=0;i<5;i++)
+        scanf("%d",&a[i]);
+
+    displayArray(a,5);
+
+    return 0;
+}
+```
 # Output:
+<img width="993" height="411" alt="image" src="https://github.com/user-attachments/assets/f4412255-d332-48d0-9863-8ccc1acaf9e1" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
